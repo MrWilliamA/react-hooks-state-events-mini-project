@@ -1,17 +1,19 @@
 import React from "react";
 
-function Task({ tasks }) {
-  console.log(tasks);
-  const taskCollection = tasks.map((task) => {
-    return (
-      <div className="task">
-        <div className="label">{task.category}</div>
-        <div className="text">{task.text}</div>
-        <button className="delete">X</button>
-      </div>
-    );
-  });
-  return taskCollection;
+function Task({ category, text, handleDeleteTask }) {
+  let deleteClick = () => {
+    handleDeleteTask(text);
+  };
+
+  return (
+    <div className="task">
+      <div className="label">{category}</div>
+      <div className="text">{text}</div>
+      <button onClick={deleteClick} className="delete">
+        X
+      </button>
+    </div>
+  );
 }
 
 export default Task;
